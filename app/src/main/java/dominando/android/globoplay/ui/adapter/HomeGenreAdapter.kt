@@ -15,7 +15,10 @@ import kotlinx.android.synthetic.main.rv_home_list_genre.view.*
 class HomeGenreAdapter(
     private val context: Context,
     private val listGenre: List<Genre>,
+    private val listMovie: List<Movie>
 ) : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre>() {
+
+    private var listMovieToGenre: MutableList<Movie> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolderGenre {
         val itemView =
@@ -25,7 +28,7 @@ class HomeGenreAdapter(
 
     override fun onBindViewHolder(holderGenre: MyViewHolderGenre, position: Int) {
         holderGenre.bind(listGenre[position])
-        setListMovieToGenre(holderGenre.rvlistMovie, listGenre[position].movies)
+        setListMovieToGenre(holderGenre.rvlistMovie, setupMovieToGenre())
     }
 
     override fun getItemCount(): Int = listGenre.size
@@ -46,5 +49,17 @@ class HomeGenreAdapter(
         }
         recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = itemRecyclerView
+    }
+
+    fun setupMovieToGenre(): MutableList<Movie> {
+        listGenre.forEach { genre ->
+            listMovie.forEach { movie ->
+                movie.genre.forEach { idGenre ->
+                    val movieFilter = idGenre.filter { it.toString() == genre.id }
+                    if(movieFilter == genre.id) listMovieToGenre.add(Movie(movie.id, movie.name, movie.genre, movie.imageUrl))
+                }
+            }
+        }
+        return listMovieToGenre
     }
 }

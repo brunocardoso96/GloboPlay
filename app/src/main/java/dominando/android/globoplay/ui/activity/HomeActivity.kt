@@ -7,14 +7,12 @@ import androidx.recyclerview.widget.RecyclerView
 import dominando.android.globoplay.R
 import dominando.android.globoplay.ui.adapter.HomeGenreAdapter
 import kotlinx.android.synthetic.main.rv_home_list_genre.view.*
-import java.util.*
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var recyclerViewGenre: RecyclerView
+    private val listGenre = getGenre()
     private val listMovie = getMovie()
-    private val listTopics = getTopics()
-    private var mutableListGenre: MutableList<Genre> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +23,6 @@ class HomeActivity : AppCompatActivity() {
     private fun initialize() {
         viewBind()
         setupActionBar()
-        setupMovieToGenre()
         setupRecyclerGenre()
     }
 
@@ -36,42 +33,27 @@ class HomeActivity : AppCompatActivity() {
     private fun setupRecyclerGenre() {
         recyclerViewGenre.apply {
             recyclerViewGenre.layoutManager = LinearLayoutManager(this@HomeActivity, RecyclerView.VERTICAL, false)
-            recyclerViewGenre.adapter = HomeGenreAdapter(this@HomeActivity, mutableListGenre)
+            recyclerViewGenre.adapter = HomeGenreAdapter(this@HomeActivity, listGenre, listMovie )
         }
     }
 
     private fun viewBind() {
         recyclerViewGenre = findViewById(R.id.rvHomeGenre)
     }
-
-    fun setupMovieToGenre(){
-        lateinit var listMovieToGenre: MutableList<Movie>
-        listTopics.forEach { genre ->
-            listMovie.forEach { movie ->
-                movie.genre.forEach { idGenre ->
-                    val movieFilter = idGenre.filter { idGenre == genre.id }
-                    if(movieFilter == genre.id) listMovieToGenre.add(Movie(movie.id, movie.name, movie.genre, movie.imageUrl))
-                }
-            }
-        mutableListGenre.add(Genre(genre.id, genre.name, listMovieToGenre))
-        }
-    }
 }
 
-class Genre(val id: String, val name: String, val movies: List<Movie>)
+class Genre(val id: String, val name: String)
 
 class Movie(val id: String, val name: String, val genre: List<String>, val imageUrl: Int)
 
-class Topics(val id: String, val name: String)
-
-fun getTopics(): List<Topics>{
+fun getGenre(): List<Genre> {
     return listOf(
-        Topics("1", "Comedia"),
-        Topics("2", "Ação"),
-        Topics("3", "Terror"),
-        Topics("4", "Suspense"),
-        Topics("5", "Romance"),
-        Topics("6", "Desenho"),
+        Genre("1", "Comedia"),
+        Genre("2", "Ação"),
+        Genre("3", "Terror"),
+        Genre("4", "Suspense"),
+        Genre("5", "Romance"),
+        Genre("6", "Desenho"),
     )
 }
 
