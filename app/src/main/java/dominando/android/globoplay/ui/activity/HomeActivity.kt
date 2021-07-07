@@ -14,8 +14,6 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var recyclerViewGenre: RecyclerView
     private val repository = HomeRepository()
 
-    private val listGenre = repository.getGenre()
-    private val listMovie = repository.getMovie()
     private val listMovieToGenre = repository.getMovieToGenre()
 
     override fun onCreate(savedInstanceState: Bundle?) {
