@@ -4,6 +4,7 @@ import dominando.android.globoplay.R
 import dominando.android.globoplay.data.model.Genre
 import dominando.android.globoplay.data.model.Movie
 import dominando.android.globoplay.data.model.MovieToGenre
+import dominando.android.globoplay.data.network.Api
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
@@ -11,16 +12,14 @@ import kotlinx.coroutines.withContext
 class HomeRepository {
 
     private val movieByGenre = ArrayList<MovieToGenre>()
+    private val service = Api.initRetrofit()
 
-    fun getGenre(): List<Genre> {
-        return listOf(
-                Genre("1", "Comedia"),
-                Genre("2", "Ação"),
-                Genre("3", "Terror"),
-                Genre("4", "Suspense"),
-                Genre("5", "Romance"),
-                Genre("6", "Desenho"),
-            )
+    suspend fun getGenre(): List<Genre> {
+        return service.getGenre(Api.APIKEY)
+            .genres
+            .map {
+                Genre(it.id.toString(), it.name)
+            }
     }
 
     fun getMovie(): List<Movie> {
@@ -41,13 +40,12 @@ class HomeRepository {
         )
     }
 
-
-    fun getMovieByGenre(): ArrayList<MovieToGenre> {
-        getGenre().forEach { genre ->
-            movieByGenre.add(MovieToGenre(genre.id, genre.name, selectMovieToGenre(getGenre(), getMovie(), genre.id)))
-        }
-        return movieByGenre
-    }
+//    fun getMovieByGenre(): ArrayList<MovieToGenre> {
+//        getGenre().forEach { genre ->
+//            movieByGenre.add(MovieToGenre(genre.id, genre.name, selectMovieToGenre(getGenre(), getMovie(), genre.id)))
+//        }
+//        return movieByGenre
+//    }
 
     private fun selectMovieToGenre(listGenre: List<Genre>, listMovie: List<Movie>, id: String): MutableList<Movie> {
         val movies: MutableList<Movie> = ArrayList()
