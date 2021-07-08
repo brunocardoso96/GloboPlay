@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import dominando.android.globoplay.R
 import dominando.android.globoplay.data.model.Movie
+import dominando.android.globoplay.helper.ImageHelper
 
 class HomeMovieAdapter(
     private val list: List<Movie>,
@@ -21,17 +22,16 @@ class HomeMovieAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolderMovie, position: Int) {
         holder.bindView(list[position])
-        holder.itemImage.setImageResource(list[position].imageUrl)
     }
 
     override fun getItemCount(): Int = list.size
 
     class MyViewHolderMovie(itemView: View, private val onItemClickListener: (movie: Movie) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
-
         var itemImage: ImageView = itemView.findViewById(R.id.imgMovie)
 
         fun bindView(holder: Movie) {
+            ImageHelper.insertImage(itemImage, holder.image)
             itemView.setOnClickListener {
                 onItemClickListener.invoke(holder)
             }
