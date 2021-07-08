@@ -15,8 +15,8 @@ class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
     val movieByGenreLiveData = MutableLiveData<List<MovieToGenre>>()
 
     fun getMovieByGenre() {
-//        movieByGenreLiveData.postValue(repository.getMovieByGenre())
         viewModelScope.launch {
+        movieByGenreLiveData.postValue(repository.getMovieByGenre())
             try {
                 val result = repository.getGenre()
                 Log.e("ResultGenre", result.toString())

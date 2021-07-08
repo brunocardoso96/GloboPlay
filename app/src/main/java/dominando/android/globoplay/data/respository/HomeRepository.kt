@@ -40,12 +40,12 @@ class HomeRepository {
         )
     }
 
-//    fun getMovieByGenre(): ArrayList<MovieToGenre> {
-//        getGenre().forEach { genre ->
-//            movieByGenre.add(MovieToGenre(genre.id, genre.name, selectMovieToGenre(getGenre(), getMovie(), genre.id)))
-//        }
-//        return movieByGenre
-//    }
+    suspend fun getMovieByGenre(): ArrayList<MovieToGenre> {
+        getGenre().forEach { genre ->
+            movieByGenre.add(MovieToGenre(genre.id, genre.name, selectMovieToGenre(getGenre(), getMovie(), genre.id)))
+        }
+        return movieByGenre
+    }
 
     private fun selectMovieToGenre(listGenre: List<Genre>, listMovie: List<Movie>, id: String): MutableList<Movie> {
         val movies: MutableList<Movie> = ArrayList()
