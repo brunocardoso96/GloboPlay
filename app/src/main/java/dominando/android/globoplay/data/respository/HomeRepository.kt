@@ -14,7 +14,7 @@ class HomeRepository {
         return service.getGenre(Api.APIKEY)
             .genres
             .map {
-                Genre(it.id.toString(), it.name)
+                Genre(it.id, it.name)
             }
     }
 
@@ -33,13 +33,12 @@ class HomeRepository {
         return movieByGenre
     }
 
-    private fun selectMovieToGenre(listGenre: List<Genre>, listMovie: List<Movie>, id: String): MutableList<Movie> {
+    private fun selectMovieToGenre(listGenre: List<Genre>, listMovie: List<Movie>, id: Int): MutableList<Movie> {
         val movies: MutableList<Movie> = ArrayList()
         listGenre.forEach {
             listMovie.forEach { movie ->
                 movie.genre.forEach {
-                    val retorno = it.toString().filter { it.toString() == id }
-                    if (retorno == id) {
+                    if (it == id) {
                         movies.add(Movie(movie.id, movie.name, movie.genre, movie.image))
                     }
                 }

@@ -1,3 +1,3 @@
 package dominando.android.globoplay.data.model
 
-class Genre(val id: String, val name: String)
+class Genre(val id: Int, val name: String)
