@@ -1,15 +1,17 @@
-package dominando.android.globoplay.ui.adapter
+package dominando.android.globoplay.ui.feature.home.adapter
 
-import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dominando.android.globoplay.R
 import dominando.android.globoplay.data.model.Movie
 import dominando.android.globoplay.data.model.MovieToGenre
+import dominando.android.globoplay.ui.feature.moviedetail.activity.MovieDetailActivity
 import kotlinx.android.synthetic.main.rv_home_list_genre.view.*
 
 class HomeGenreAdapter(
@@ -49,7 +51,8 @@ class HomeGenreAdapter(
 
     fun setListMovieToGenre(recyclerView: RecyclerView, list: List<Movie>) {
         val itemRecyclerView = HomeMovieAdapter(list) {
-            Log.i("CLICKMOVIE", "Sucesso")
+            val intent = MovieDetailActivity.getIntentMovieDetail(recyclerView.context)
+            startActivity(recyclerView.context, intent, null)
         }
         recyclerView.layoutManager = LinearLayoutManager(recyclerView.context, RecyclerView.HORIZONTAL, false)
         recyclerView.adapter = itemRecyclerView

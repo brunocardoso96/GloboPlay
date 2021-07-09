@@ -1,4 +1,4 @@
-package dominando.android.globoplay.ui.adapter
+package dominando.android.globoplay.ui.feature.home.adapter
 
 import android.view.LayoutInflater
 import android.view.View

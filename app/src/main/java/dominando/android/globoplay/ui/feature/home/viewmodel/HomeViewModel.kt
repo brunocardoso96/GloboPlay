@@ -1,4 +1,4 @@
-package dominando.android.globoplay.ui.viewmodel
+package dominando.android.globoplay.ui.feature.home.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData

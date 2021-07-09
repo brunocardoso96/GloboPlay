@@ -1,16 +1,18 @@
-package dominando.android.globoplay.ui.activity
+package dominando.android.globoplay.ui.feature.home.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import dominando.android.globoplay.R
 import dominando.android.globoplay.data.respository.HomeRepository
-import dominando.android.globoplay.ui.adapter.HomeGenreAdapter
-import dominando.android.globoplay.ui.viewmodel.HomeViewModel
+import dominando.android.globoplay.databinding.ActivityMainBinding
+import dominando.android.globoplay.ui.feature.home.adapter.HomeGenreAdapter
+import dominando.android.globoplay.ui.feature.home.viewmodel.HomeViewModel
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
 
     private lateinit var recyclerViewGenre: RecyclerView
     private lateinit var viewModel: HomeViewModel
@@ -18,7 +20,8 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initialize()
     }
 
@@ -42,13 +45,14 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun setupViewModel() {
-        viewModel = ViewModelProvider(this, HomeViewModel.HomeViewModelFactory(HomeRepository())).get(HomeViewModel::class.java)
+        viewModel = ViewModelProvider(this, HomeViewModel.HomeViewModelFactory(HomeRepository())).get(
+            HomeViewModel::class.java)
         viewModel.movieByGenreLiveData.observe(this) {
             adapterGenre.addMovieToGenre(it)
         }
     }
 
     private fun viewBind() {
-        recyclerViewGenre = findViewById(R.id.rvHomeGenre)
+        recyclerViewGenre = binding.rvHomeGenre
     }
 }
