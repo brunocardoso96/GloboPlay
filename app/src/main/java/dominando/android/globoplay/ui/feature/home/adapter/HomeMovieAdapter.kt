@@ -10,12 +10,14 @@ import dominando.android.globoplay.helper.loadImage
 class HomeMovieAdapter(
     private val list: List<Movie>,
     private val onItemClickListener: (movie: Movie) -> Unit
-) : RecyclerView.Adapter<HomeMovieAdapter.MyViewHolderMovie>(){
+) : RecyclerView.Adapter<HomeMovieAdapter.MyViewHolderMovie>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolderMovie {
         return MyViewHolderMovie(
             RvHomeListMovieBinding.inflate(
-                LayoutInflater.from(parent.context), parent, false))
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: MyViewHolderMovie, position: Int) {
@@ -30,5 +32,6 @@ class HomeMovieAdapter(
 
     override fun getItemCount(): Int = list.size
 
-    class MyViewHolderMovie(val binding: RvHomeListMovieBinding) : RecyclerView.ViewHolder(binding.root)
+    class MyViewHolderMovie(val binding: RvHomeListMovieBinding) :
+        RecyclerView.ViewHolder(binding.root)
 }
