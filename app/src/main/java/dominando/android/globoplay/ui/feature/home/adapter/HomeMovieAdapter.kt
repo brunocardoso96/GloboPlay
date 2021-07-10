@@ -1,40 +1,34 @@
 package dominando.android.globoplay.ui.feature.home.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import dominando.android.globoplay.R
 import dominando.android.globoplay.data.model.Movie
+import dominando.android.globoplay.databinding.RvHomeListMovieBinding
 import dominando.android.globoplay.helper.loadImage
-import kotlinx.android.synthetic.main.rv_list_movie.view.*
 
 class HomeMovieAdapter(
     private val list: List<Movie>,
     private val onItemClickListener: (movie: Movie) -> Unit
 ) : RecyclerView.Adapter<HomeMovieAdapter.MyViewHolderMovie>(){
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolderMovie {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.rv_list_movie, parent, false)
-        return MyViewHolderMovie(itemView, onItemClickListener)
+        return MyViewHolderMovie(
+            RvHomeListMovieBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: MyViewHolderMovie, position: Int) {
-        holder.bindView(list[position])
+        val movies = list[position]
+        with(holder.binding) {
+            imgMovie.loadImage(movies.image)
+            imgMovie.setOnClickListener {
+                onItemClickListener.invoke(movies)
+            }
+        }
     }
 
     override fun getItemCount(): Int = list.size
 
-    class MyViewHolderMovie(itemView: View, private val onItemClickListener: (movie: Movie) -> Unit
-    ) : RecyclerView.ViewHolder(itemView) {
-        val itemImage: ImageView = itemView.imgMovie
-        fun bindView(holder: Movie) {
-            itemImage.loadImage(holder.image)
-            itemView.setOnClickListener {
-                onItemClickListener.invoke(holder)
-            }
-        }
-    }
+    class MyViewHolderMovie(val binding: RvHomeListMovieBinding) : RecyclerView.ViewHolder(binding.root)
 }
