@@ -89,12 +89,17 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
             android:layout_marginTop="32dp"
+            android:background="@color/black"
+            app:tabIndicator="@drawable/tab_item_selector"
+            app:tabIndicatorFullWidth="false"
+            app:tabIndicatorHeight="2dp"
+            app:tabSelectedTextColor="#FFF"
+            app:tabTextColor="#666666"
+            app:tabMode="scrollable"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
             app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
-            app:layout_constraintTop_toBottomOf="@+id/layoutButton"
-            app:tabTextColor="@color/white" />
+            app:layout_constraintTop_toBottomOf="@+id/layoutButton" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
