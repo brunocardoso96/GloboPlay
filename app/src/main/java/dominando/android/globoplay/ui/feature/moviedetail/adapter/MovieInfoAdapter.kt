@@ -8,8 +8,8 @@ import dominando.android.globoplay.R
 import dominando.android.globoplay.ui.feature.moviedetail.fragment.MovieInfoFragment
 
 private val TAB_TITLES = arrayOf(
-    R.string.tab_text_1,
-    R.string.tab_text_2
+    "ASSISTA TAMBÉM",
+    "DETALHES"
 )
 
 class MovieInfoAdapter(private val context: Context, fm: FragmentManager) :
@@ -20,7 +20,7 @@ class MovieInfoAdapter(private val context: Context, fm: FragmentManager) :
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return context.resources.getString(TAB_TITLES[position])
+        return TAB_TITLES[position]
     }
 
     override fun getCount(): Int {

@@ -1,5 +1,6 @@
 package dominando.android.globoplay.ui.feature.moviedetail.activity
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -8,11 +9,13 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import dominando.android.globoplay.databinding.ActivityMovieDetailBinding
 import dominando.android.globoplay.ui.feature.moviedetail.adapter.MovieInfoAdapter
+import eightbitlab.com.blurview.BlurView
 
 class MovieDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailBinding
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -24,6 +27,7 @@ class MovieDetailActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
+
     }
 
     companion object {

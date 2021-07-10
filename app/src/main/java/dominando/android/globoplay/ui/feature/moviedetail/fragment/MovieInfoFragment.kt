@@ -33,7 +33,6 @@ class MovieInfoFragment : Fragment() {
         val root = binding.root
 
         movieInfoViewModel.text.observe(viewLifecycleOwner, Observer {
-
         })
         return root
     }

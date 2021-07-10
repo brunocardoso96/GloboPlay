@@ -1,38 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fillViewport="true"
     tools:context=".ui.feature.moviedetail.activity.MovieDetailActivity">
 
-    <View
-        android:id="@+id/viewInfMovie"
-        android:layout_width="wrap_content"
-        android:layout_height="350dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-    </View>
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabs"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainMovieDetail"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        app:layout_constraintTop_toBottomOf="@+id/viewInfMovie"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:layout_height="wrap_content">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/view_pager"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabs" />
+        <ImageView
+            android:id="@+id/imgBlur"
+            android:layout_width="match_parent"
+            android:layout_height="450dp"
+            android:src="@color/grey"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
+            app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
+            app:layout_constraintTop_toTopOf="@+id/constrainMovieDetail"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imgMovie"
+            android:layout_width="100dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="60dp"
+            android:background="@color/grey"
+            android:src="@drawable/sonic"
+            app:layout_constraintBottom_toBottomOf="@+id/imgBlur"
+            app:layout_constraintEnd_toEndOf="@+id/imgBlur"
+            app:layout_constraintStart_toStartOf="@+id/imgBlur"
+            app:layout_constraintTop_toTopOf="@+id/imgBlur"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Sonic O Filme"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            app:layout_constraintStart_toStartOf="@+id/imgMovie"
+            app:layout_constraintEnd_toEndOf="@+id/imgMovie"
+            app:layout_constraintTop_toBottomOf="@+id/imgMovie"/>
+
+        <TextView
+            android:id="@+id/txtGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Animação"
+            android:textSize="12dp"
+            android:textColor="#807E7E"
+            app:layout_constraintStart_toStartOf="@+id/txtTitle"
+            app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:maxLines="3"
+            android:textColor="#807E7E"
+            android:text="ddsadas das dsad sadsad das dsa dsa dasdsa dsa dsa dsad das dsa das dsa dsad sadsa dsa dsa dsa dsa das dsa dsad sad sa dsa dsadsadsadsad sad sadsa dsadsa dsadsa dsad asd sad sadsadsa"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtGenre"            />
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            app:tabTextColor="@color/white"
+            app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
+            app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
+            app:layout_constraintTop_toBottomOf="@+id/imgBlur" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="wrap_content"
+            android:layout_height="247dp"
+            app:layout_constraintBottom_toBottomOf="@id/constrainMovieDetail"
+            app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
+            app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
+            app:layout_constraintTop_toBottomOf="@+id/tabs" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
