@@ -61,18 +61,28 @@
             app:layout_constraintTop_toBottomOf="@+id/txtTitle"/>
 
         <TextView
+            android:id="@+id/txtDescription"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
             android:maxLines="3"
-            android:textColor="#807E7E"
             android:text="ddsadas das dsad sadsad das dsa dsa dasdsa dsa dsa dsad das dsa das dsa dsad sadsa dsa dsa dsa dsa das dsa dsad sad sa dsa dsadsadsadsad sad sadsa dsadsa dsadsa dsad asd sad sadsadsa"
+            android:textColor="#807E7E"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtGenre"            />
+            app:layout_constraintTop_toBottomOf="@+id/txtGenre" />
 
+        <include
+            layout="@layout/button_movie_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/imgBlur"
+            app:layout_constraintBottom_toTopOf="@id/tabs"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtDescription" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"

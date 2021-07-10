@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageButton
+        android:id="@+id/btnWatch"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:background="@drawable/button_activated"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:src="@drawable/ic_arrow_right_activated"
+        app:layout_constraintBottom_toBottomOf="@id/btnWatch"
+        app:layout_constraintEnd_toEndOf="@+id/btnWatch"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="@+id/btnWatch"
+        app:layout_constraintTop_toTopOf="@id/btnWatch" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:elevation="2dp"
+        android:text="Assista"
+        android:textColor="#454545"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPlay"
+        app:layout_constraintStart_toEndOf="@id/imgPlay"
+        app:layout_constraintTop_toTopOf="@+id/imgPlay"
+        app:layout_constraintVertical_bias="0.110000014" />
+
+    <ImageButton
+        android:id="@+id/btnMyList"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/button_desabled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/btnWatch"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        android:src="@drawable/ic_star_desabled"
+        app:layout_constraintBottom_toBottomOf="@id/btnWatch"
+        app:layout_constraintEnd_toEndOf="@+id/btnMyList"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="@+id/btnMyList"
+        app:layout_constraintTop_toTopOf="@id/btnMyList" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="3dp"
+        android:elevation="2dp"
+        android:text="Minha lista"
+        android:textColor="#c4c4c4"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStart"
+        app:layout_constraintStart_toEndOf="@id/imgStart"
+        app:layout_constraintTop_toTopOf="@+id/imgStart"
+        app:layout_constraintVertical_bias="0.110000014" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
