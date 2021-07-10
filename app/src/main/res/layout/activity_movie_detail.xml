@@ -17,7 +17,7 @@
             android:id="@+id/imgBlur"
             android:layout_width="match_parent"
             android:layout_height="340dp"
-            android:src=""
+            android:src="@color/grey"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
             app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
