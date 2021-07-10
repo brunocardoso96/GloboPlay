@@ -6,23 +6,26 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import dominando.android.globoplay.ui.feature.moviedetail.fragment.MovieInfoFragment
 
-private val TAB_TITLES = arrayOf(
-    "ASSISTA TAMBÉM",
-    "DETALHES"
-)
-
-class MovieInfoAdapter(private val context: Context, fm: FragmentManager) :
+class MovieInfoAdapter(fm: FragmentManager) :
     FragmentPagerAdapter(fm) {
 
-    override fun getItem(position: Int): Fragment {
-        return MovieInfoFragment.newInstance(position + 1)
-    }
+    private val fragmentList : MutableList<Fragment> = ArrayList()
+    private val titleList : MutableList<String> = ArrayList()
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return TAB_TITLES[position]
+    override fun getItem(position: Int): Fragment {
+        return fragmentList[position]
     }
 
     override fun getCount(): Int {
-        return 2
+        return fragmentList.size
+    }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return titleList[position]
+    }
+
+    fun addFragment(fragment: Fragment, title: String) {
+        fragmentList.add(fragment)
+        titleList.add(title)
     }
 }

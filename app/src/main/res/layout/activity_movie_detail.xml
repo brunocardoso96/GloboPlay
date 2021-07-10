@@ -95,6 +95,7 @@
             app:tabIndicatorFullWidth="false"
             app:tabIndicatorHeight="2dp"
             app:tabSelectedTextColor="#FFF"
+
             app:tabTextColor="#666666"
             app:tabMode="scrollable"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"

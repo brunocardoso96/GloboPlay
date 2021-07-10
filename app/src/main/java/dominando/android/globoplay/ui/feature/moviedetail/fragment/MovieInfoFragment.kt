@@ -1,6 +1,7 @@
 package dominando.android.globoplay.ui.feature.moviedetail.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,7 +21,8 @@ class MovieInfoFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         movieInfoViewModel = ViewModelProvider(this).get(MovieInfoViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 1)
+            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 2)
+
         }
     }
 
