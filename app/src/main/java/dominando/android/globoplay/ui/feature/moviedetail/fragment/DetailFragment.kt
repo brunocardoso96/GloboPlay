@@ -1,7 +1,6 @@
 package dominando.android.globoplay.ui.feature.moviedetail.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,18 +8,18 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import dominando.android.globoplay.databinding.FragmentMovieInfoBinding
-import dominando.android.globoplay.ui.feature.moviedetail.viewmodel.MovieInfoViewModel
+import dominando.android.globoplay.ui.feature.moviedetail.viewmodel.DetailViewModel
 
-class MovieInfoFragment : Fragment() {
+class DetailFragment : Fragment() {
 
-    private lateinit var movieInfoViewModel: MovieInfoViewModel
+    private lateinit var movieInfoViewModel: DetailViewModel
     private var _binding: FragmentMovieInfoBinding? = null
 
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        movieInfoViewModel = ViewModelProvider(this).get(MovieInfoViewModel::class.java).apply {
+        movieInfoViewModel = ViewModelProvider(this).get(DetailViewModel::class.java).apply {
             setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 2)
 
         }
@@ -35,6 +34,7 @@ class MovieInfoFragment : Fragment() {
         val root = binding.root
 
         movieInfoViewModel.text.observe(viewLifecycleOwner, Observer {
+
         })
         return root
     }
@@ -42,8 +42,8 @@ class MovieInfoFragment : Fragment() {
     companion object {
         private const val ARG_SECTION_NUMBER = "section_number"
         @JvmStatic
-        fun newInstance(sectionNumber: Int): MovieInfoFragment {
-            return MovieInfoFragment().apply {
+        fun newInstance(sectionNumber: Int): DetailFragment {
+            return DetailFragment().apply {
                 arguments = Bundle().apply {
                     putInt(ARG_SECTION_NUMBER, sectionNumber)
                 }

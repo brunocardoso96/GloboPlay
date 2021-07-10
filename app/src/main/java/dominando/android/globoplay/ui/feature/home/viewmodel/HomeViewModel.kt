@@ -19,7 +19,7 @@ class HomeViewModel(private val repository: HomeRepository) : ViewModel() {
         movieByGenreLiveData.postValue(repository.getMovieByGenre())
             try {
                 val result = repository.getGenre()
-                Log.e("ResultGenre", result.toString())
+//                Log.e("ResultGenre", result.toString())
             } catch (e: Exception) {
                 e.printStackTrace()
             }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="247dp"
     android:background="@color/grey"
-    tools:context=".ui.feature.moviedetail.fragment.MovieInfoFragment">
+    tools:context=".ui.feature.moviedetail.fragment.DetailFragment">
 
     <TextView
         android:id="@+id/datasheet"

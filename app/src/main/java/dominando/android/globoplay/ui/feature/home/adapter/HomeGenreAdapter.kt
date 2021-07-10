@@ -1,5 +1,6 @@
 package dominando.android.globoplay.ui.feature.home.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
@@ -46,6 +47,7 @@ class HomeGenreAdapter : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre
     private fun setListMovieToGenre(recyclerView: RecyclerView, list: List<Movie>) {
         val itemRecyclerView = HomeMovieAdapter(list) {
             val intent = MovieDetailActivity.getIntentMovieDetail(recyclerView.context)
+            intent.putExtra("EXTRA_ID", it.id)
             startActivity(recyclerView.context, intent, null)
         }
         recyclerView.layoutManager =
