@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:fillViewport="true"
     tools:context=".ui.feature.moviedetail.activity.MovieDetailActivity">
 
@@ -15,8 +16,8 @@
         <ImageView
             android:id="@+id/imgBlur"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:src="@color/grey"
+            android:layout_height="340dp"
+            android:src=""
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
             app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
@@ -75,24 +76,25 @@
             app:layout_constraintTop_toBottomOf="@+id/txtGenre" />
 
         <include
+            android:id="@+id/layoutButton"
             layout="@layout/button_movie_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imgBlur"
-            app:layout_constraintBottom_toTopOf="@id/tabs"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/txtDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/colorPrimary"
-            app:tabTextColor="@color/white"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
             app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
-            app:layout_constraintTop_toBottomOf="@+id/imgBlur" />
+            app:layout_constraintTop_toBottomOf="@+id/layoutButton"
+            app:tabTextColor="@color/white" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
