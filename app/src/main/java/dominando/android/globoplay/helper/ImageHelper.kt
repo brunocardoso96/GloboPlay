@@ -1,12 +1,12 @@
 package dominando.android.globoplay.helper
 
 import android.widget.ImageView
-import com.squareup.picasso.Picasso
+import com.bumptech.glide.Glide
 import dominando.android.globoplay.data.network.Api
 
-object ImageHelper  {
-    fun insertImage(imageView: ImageView, imageUrl: String) {
-        val url = Api.IMAGESERVICE + imageUrl
-        Picasso.get().load(url).into(imageView)
-    }
+fun ImageView.loadImage(imageUrl: String) {
+    Glide.with(this)
+        .load(Api.IMAGESERVICE + imageUrl)
+        .centerCrop()
+        .into(this)
 }

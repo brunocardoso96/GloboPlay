@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import dominando.android.globoplay.R
 import dominando.android.globoplay.data.model.Movie
-import dominando.android.globoplay.helper.ImageHelper
+import dominando.android.globoplay.helper.loadImage
 import kotlinx.android.synthetic.main.rv_list_movie.view.*
 
 class HomeMovieAdapter(
@@ -30,9 +30,8 @@ class HomeMovieAdapter(
     class MyViewHolderMovie(itemView: View, private val onItemClickListener: (movie: Movie) -> Unit
     ) : RecyclerView.ViewHolder(itemView) {
         val itemImage: ImageView = itemView.imgMovie
-
         fun bindView(holder: Movie) {
-            ImageHelper.insertImage(itemImage, holder.image)
+            itemImage.loadImage(holder.image)
             itemView.setOnClickListener {
                 onItemClickListener.invoke(holder)
             }

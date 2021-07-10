@@ -11,13 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import dominando.android.globoplay.R
 import dominando.android.globoplay.data.model.Movie
 import dominando.android.globoplay.data.model.MovieToGenre
+import dominando.android.globoplay.databinding.RvHomeListGenreBinding
 import dominando.android.globoplay.ui.feature.moviedetail.activity.MovieDetailActivity
 import kotlinx.android.synthetic.main.rv_home_list_genre.view.*
 
-class HomeGenreAdapter(
-//    private val context: Context,
-//    private val movieToGenre: List<MovieToGenre>,
-) : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre>() {
+class HomeGenreAdapter : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre>() {
 
     private val movieToGenre = ArrayList<MovieToGenre>()
 
@@ -28,25 +26,34 @@ class HomeGenreAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolderGenre {
-        val itemView =
-            LayoutInflater.from(parent.context).inflate(R.layout.rv_home_list_genre, parent, false)
-        return MyViewHolderGenre(itemView)
+//        val itemView =
+//            LayoutInflater.from(parent.context).inflate(R.layout.rv_home_list_genre, parent, false)
+        return MyViewHolderGenre(RvHomeListGenreBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holderGenre: MyViewHolderGenre, position: Int) {
-        holderGenre.bind(movieToGenre[position])
-        setListMovieToGenre(holderGenre.rvlistMovie, movieToGenre[position].listMovie)
+        val movie = movieToGenre[position]
+        with(holderGenre.binding) {
+            titleGenre.text = movie.name
+            setListMovieToGenre(rvMovie, movie.listMovie)
+        }
+
+
+//        holderGenre.bind(movieToGenre[position])
+//        setListMovieToGenre(holderGenre.rvlistMovie, movieToGenre[position].listMovie)
     }
 
     override fun getItemCount(): Int = movieToGenre.size
 
-    class MyViewHolderGenre(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val rvlistMovie: RecyclerView = itemView.findViewById(R.id.rvMovie)
-        private val title = itemView.titleGenre
+    class MyViewHolderGenre(val binding: RvHomeListGenreBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(holder: MovieToGenre) {
-            title.text = holder.name
-        }
+
+    //        val rvlistMovie: RecyclerView = itemView.findViewById(R.id.rvMovie)
+//        private val title = itemView.titleGenre
+//
+//        fun bind(holder: MovieToGenre) {
+//            title.text = holder.name
+//        }
     }
 
     fun setListMovieToGenre(recyclerView: RecyclerView, list: List<Movie>) {
