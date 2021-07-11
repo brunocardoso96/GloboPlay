@@ -47,16 +47,18 @@ class MovieDetailActivity : AppCompatActivity() {
             MovieDetailViewModelFactory(MovieDetailRepository()))
             .get(MovieDetailViewModel::class.java)
 
+        val id = intent.getStringExtra(EXTRA_ID)
+        id?.let { viewModel.getMovieDetail(it) }
+
         viewModel.movieDetail.observe(this) {
             binding.txtTitle.text = it.title
             binding.txtDescription.text = it.overview
             binding.txtGenre.text = it.genres.concatGenre()
             binding.imgBlur.loadImage(it.postPath)
             binding.imgMovie.loadImage(it.postPath)
+            DetailFragment.newInstance(it)
         }
-        val id = intent.getStringExtra(EXTRA_ID)
-        id?.let { viewModel.getMovieDetail(it) }
-            DetailFragment.newInstance(id)
+
     }
 
     companion object {
