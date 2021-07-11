@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import dominando.android.globoplay.data.model.MovieDetail
 import dominando.android.globoplay.data.respository.MovieDetailRepository
+import dominando.android.globoplay.ui.feature.moviedetail.fragment.DetailFragment
 import kotlinx.coroutines.launch
 
 class MovieDetailViewModel(private val repository: MovieDetailRepository) : ViewModel(){
@@ -15,6 +16,7 @@ class MovieDetailViewModel(private val repository: MovieDetailRepository) : View
 
     fun getMovieDetail(id: String) {
         viewModelScope.launch {
+            DetailFragment.newInstance(repository.getMovieDetail(id))
             movieDetail.postValue(repository.getMovieDetail(id))
             try {
                 val result = repository.getMovieDetail(id)

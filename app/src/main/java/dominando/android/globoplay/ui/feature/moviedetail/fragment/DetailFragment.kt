@@ -15,23 +15,15 @@ import dominando.android.globoplay.ui.feature.moviedetail.viewmodel.DetailViewMo
 
 class DetailFragment : Fragment() {
 
-    private lateinit var movieInfoViewModel: DetailViewModel
     private var _binding: FragmentMovieInfoBinding? = null
 
     private val binding get() = _binding!!
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        movieInfoViewModel = ViewModelProvider(this).get(DetailViewModel::class.java).apply {
-            setIndex(arguments?.getInt(ARG_SECTION_NUMBER) ?: 2)
-
-        }
-
-    }
+    private lateinit var movie: MovieDetail
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         initialize()
     }
 
@@ -40,32 +32,23 @@ class DetailFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        _binding = FragmentMovieInfoBinding.inflate(inflater, container, false)
+        _binding = FragmentMovieInfoBinding.inflate(layoutInflater)
         val root = binding.root
-
-        movieInfoViewModel.text.observe(viewLifecycleOwner, Observer {
-
-        })
-
         return root
-
     }
 
     private fun initialize() {
-        val movieDetail = arguments?.getParcelable<MovieDetail>(EXTRA_TITLE_MOVIE)
-        Log.i(EXTRA_TITLE_MOVIE, "${movieDetail.toString()}")
+
     }
 
     companion object {
         const val TITLE_DETAIL = "Detalhes"
         const val EXTRA_TITLE_MOVIE = "EXTRA_TITLE_MOVIE"
-        private const val ARG_SECTION_NUMBER = "section_number"
-        @JvmStatic
         fun newInstance(movieDetail: MovieDetail?): DetailFragment {
             return DetailFragment().apply {
                 arguments = Bundle().apply {
-                   putParcelable(EXTRA_TITLE_MOVIE, movieDetail)
+                   putSerializable(EXTRA_TITLE_MOVIE, movieDetail)
+                    movie = getSerializable(EXTRA_TITLE_MOVIE) as MovieDetail
                 }
             }
         }
