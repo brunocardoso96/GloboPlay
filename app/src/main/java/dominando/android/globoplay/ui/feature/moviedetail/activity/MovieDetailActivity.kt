@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import dominando.android.globoplay.data.model.MovieDetail
 import dominando.android.globoplay.data.respository.MovieDetailRepository
 import dominando.android.globoplay.databinding.ActivityMovieDetailBinding
 import dominando.android.globoplay.helper.concatGenre
@@ -14,7 +13,6 @@ import dominando.android.globoplay.ui.feature.moviedetail.adapter.MovieInfoAdapt
 import dominando.android.globoplay.ui.feature.moviedetail.fragment.DetailFragment
 import dominando.android.globoplay.ui.feature.moviedetail.fragment.MyFavoriteMovieFragment
 import dominando.android.globoplay.ui.feature.moviedetail.viewmodel.MovieDetailViewModel
-import kotlinx.android.synthetic.main.rv_home_list_genre.*
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -32,7 +30,6 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun initialize() {
         setupPageView()
         setupViewModel()
-
     }
 
     private fun setupPageView() {
@@ -56,12 +53,10 @@ class MovieDetailActivity : AppCompatActivity() {
             binding.txtGenre.text = it.genres.concatGenre()
             binding.imgBlur.loadImage(it.postPath)
             binding.imgMovie.loadImage(it.postPath)
-            sendMovieDetail(it)
         }
-    }
-
-    private fun sendMovieDetail(movieDetail: MovieDetail) {
-//        DetailFragment.newInstance()
+        val id = intent.getStringExtra(EXTRA_ID)
+        id?.let { viewModel.getMovieDetail(it) }
+            DetailFragment.newInstance(id)
     }
 
     companion object {

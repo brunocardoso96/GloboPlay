@@ -42,13 +42,13 @@ class DetailFragment : Fragment() {
 
     companion object {
         const val TITLE_DETAIL = "Detalhes"
+        const val EXTRA_TITLE_MOVIE = "EXTRA_TITLE_MOVIE"
         private const val ARG_SECTION_NUMBER = "section_number"
         @JvmStatic
-        fun newInstance(movieDetail: MovieDetail): DetailFragment {
+        fun newInstance(movieDetail: String?): DetailFragment {
             return DetailFragment().apply {
                 arguments = Bundle().apply {
-//                    putInt(ARG_SECTION_NUMBER, movieDetail)
-//                    putParcelable(ARG_SECTION_NUMBER, movieDetail)
+//                   putParcelable(EXTRA_TITLE_MOVIE, movieDetail)
                 }
             }
         }
