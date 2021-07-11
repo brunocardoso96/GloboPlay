@@ -6,11 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import dominando.android.globoplay.data.model.MovieDetail
-import dominando.android.globoplay.data.respository.HomeRepository
 import dominando.android.globoplay.data.respository.MovieDetailRepository
-import dominando.android.globoplay.ui.feature.home.viewmodel.HomeViewModel
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class MovieDetailViewModel(private val repository: MovieDetailRepository) : ViewModel(){
 
@@ -18,6 +15,7 @@ class MovieDetailViewModel(private val repository: MovieDetailRepository) : View
 
     fun getMovieDetail(id: String) {
         viewModelScope.launch {
+            movieDetail.postValue(repository.getMovieDetail(id))
             try {
                 val result = repository.getMovieDetail(id)
                 Log.e("ResultGenre", result.toString())

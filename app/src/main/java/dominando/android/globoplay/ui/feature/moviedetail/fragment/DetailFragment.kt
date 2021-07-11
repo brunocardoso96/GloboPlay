@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import dominando.android.globoplay.data.model.MovieDetail
 import dominando.android.globoplay.databinding.FragmentMovieInfoBinding
 import dominando.android.globoplay.ui.feature.moviedetail.viewmodel.DetailViewModel
 
@@ -40,12 +41,14 @@ class DetailFragment : Fragment() {
     }
 
     companion object {
+        const val TITLE_DETAIL = "Detalhes"
         private const val ARG_SECTION_NUMBER = "section_number"
         @JvmStatic
-        fun newInstance(sectionNumber: Int): DetailFragment {
+        fun newInstance(movieDetail: MovieDetail): DetailFragment {
             return DetailFragment().apply {
                 arguments = Bundle().apply {
-                    putInt(ARG_SECTION_NUMBER, sectionNumber)
+//                    putInt(ARG_SECTION_NUMBER, movieDetail)
+//                    putParcelable(ARG_SECTION_NUMBER, movieDetail)
                 }
             }
         }

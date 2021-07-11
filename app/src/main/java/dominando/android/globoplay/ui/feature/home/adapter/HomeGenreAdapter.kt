@@ -47,7 +47,7 @@ class HomeGenreAdapter : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre
     private fun setListMovieToGenre(recyclerView: RecyclerView, list: List<Movie>) {
         val itemRecyclerView = HomeMovieAdapter(list) {
             val intent = MovieDetailActivity.getIntentMovieDetail(recyclerView.context)
-            intent.putExtra("EXTRA_ID", it.id)
+            intent.putExtra(MovieDetailActivity.EXTRA_ID, it.id)
             startActivity(recyclerView.context, intent, null)
         }
         recyclerView.layoutManager =

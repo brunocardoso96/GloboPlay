@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import dominando.android.globoplay.R
 
-class MyFavoriteMovie : Fragment() {
+class MyFavoriteMovieFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +24,9 @@ class MyFavoriteMovie : Fragment() {
     }
 
     companion object {
+        const val TITLE_MY_FAVORITE = "Assista Também"
         fun newInstance(param1: String, param2: String) =
-            MyFavoriteMovie().apply {
+            MyFavoriteMovieFragment().apply {
                 arguments = Bundle().apply {
 //                    putString(ARG_PARAM1, param1)
 //                    putString(ARG_PARAM2, param2)
