@@ -1,5 +1,6 @@
 package dominando.android.globoplay.ui.feature.moviedetail.viewmodel
 
+import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,12 +19,6 @@ class MovieDetailViewModel(private val repository: MovieDetailRepository) : View
         viewModelScope.launch {
             DetailFragment.newInstance(repository.getMovieDetail(id))
             movieDetail.postValue(repository.getMovieDetail(id))
-            try {
-                val result = repository.getMovieDetail(id)
-                Log.e("ResultGenre", result.toString())
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
         }
     }
 

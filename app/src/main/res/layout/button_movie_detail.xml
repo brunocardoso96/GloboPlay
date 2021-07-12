@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="@dimen/elevation_2"
-        android:src="@drawable/ic_arrow_right"
+        android:background="@drawable/ic_arrow_right"
         app:layout_constraintBottom_toBottomOf="@id/btnWatch"
         app:layout_constraintEnd_toEndOf="@+id/btnWatch"
         app:layout_constraintHorizontal_bias="0.2"
@@ -54,11 +54,11 @@
         tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/imgStart"
+        android:id="@+id/imgStar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:elevation="@dimen/elevation_2"
-        android:src="@drawable/ic_star"
+        android:background="@drawable/ic_star"
         app:layout_constraintBottom_toBottomOf="@id/btnWatch"
         app:layout_constraintEnd_toEndOf="@+id/btnMyList"
         app:layout_constraintHorizontal_bias="0.15"
@@ -73,10 +73,10 @@
         android:elevation="@dimen/elevation_2"
         android:text="@string/button_my_list"
         android:textColor="@color/grey_light_extra"
-        app:layout_constraintBottom_toBottomOf="@+id/imgStart"
+        app:layout_constraintBottom_toBottomOf="@+id/imgStar"
         app:layout_constraintEnd_toEndOf="@+id/btnMyList"
-        app:layout_constraintStart_toEndOf="@id/imgStart"
-        app:layout_constraintTop_toTopOf="@+id/imgStart"
+        app:layout_constraintStart_toEndOf="@id/imgStar"
+        app:layout_constraintTop_toTopOf="@+id/imgStar"
         app:layout_constraintVertical_bias="0.110000014" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,6 +10,7 @@ import dominando.android.globoplay.data.model.Movie
 import dominando.android.globoplay.data.model.MovieToGenre
 import dominando.android.globoplay.databinding.RvHomeListGenreBinding
 import dominando.android.globoplay.ui.feature.moviedetail.activity.MovieDetailActivity
+import dominando.android.globoplay.ui.feature.moviedetail.fragment.DetailFragment
 
 class HomeGenreAdapter : RecyclerView.Adapter<HomeGenreAdapter.MyViewHolderGenre>() {
 

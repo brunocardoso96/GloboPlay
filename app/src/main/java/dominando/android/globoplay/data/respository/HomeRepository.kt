@@ -47,5 +47,4 @@ class HomeRepository {
         }
         return movies
     }
-
 }
