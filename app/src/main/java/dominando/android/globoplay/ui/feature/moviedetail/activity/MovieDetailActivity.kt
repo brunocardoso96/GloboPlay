@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import dominando.android.globoplay.data.respository.MovieDetailRepository
 import dominando.android.globoplay.databinding.ActivityMovieDetailBinding
+import dominando.android.globoplay.helper.blurImage
 import dominando.android.globoplay.helper.concatGenre
 import dominando.android.globoplay.helper.loadImage
 import dominando.android.globoplay.ui.feature.moviedetail.adapter.MovieInfoAdapter
@@ -30,6 +31,8 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun initialize() {
         setupPageView()
         setupViewModel()
+        getValuesIntent()
+        setValues()
     }
 
     private fun setupPageView() {
@@ -46,19 +49,22 @@ class MovieDetailActivity : AppCompatActivity() {
             MovieDetailViewModel.
             MovieDetailViewModelFactory(MovieDetailRepository()))
             .get(MovieDetailViewModel::class.java)
+    }
 
-        val id = intent.getStringExtra(EXTRA_ID)
-        id?.let { viewModel.getMovieDetail(it) }
+    private fun getValuesIntent() {
+        intent.getStringExtra(EXTRA_ID).run {
+            viewModel.getMovieDetail(this.toString())
+        }
+    }
 
+    private fun setValues(){
         viewModel.movieDetail.observe(this) {
             binding.txtTitle.text = it.title
             binding.txtDescription.text = it.overview
             binding.txtGenre.text = it.genres.concatGenre()
-            binding.imgBlur.loadImage(it.postPath)
+            binding.imgBlur.blurImage(it.postPath)
             binding.imgMovie.loadImage(it.postPath)
-            DetailFragment.newInstance(it)
         }
-
     }
 
     companion object {

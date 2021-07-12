@@ -15,11 +15,7 @@ import dominando.android.globoplay.ui.feature.moviedetail.viewmodel.DetailViewMo
 
 class DetailFragment : Fragment() {
 
-    private var _binding: FragmentMovieInfoBinding? = null
-
-    private val binding get() = _binding!!
-
-    private lateinit var movie: MovieDetail
+    private lateinit var binding: FragmentMovieInfoBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,18 +23,18 @@ class DetailFragment : Fragment() {
         initialize()
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMovieInfoBinding.inflate(layoutInflater)
+        binding = FragmentMovieInfoBinding.inflate(layoutInflater)
         val root = binding.root
         return root
     }
 
     private fun initialize() {
-
+        val movie = arguments?.getParcelable<MovieDetail>(EXTRA_TITLE_MOVIE)
+        movie?.let { Log.i("TITLE_DETAIL", it.title) }
     }
 
     companion object {
@@ -47,15 +43,10 @@ class DetailFragment : Fragment() {
         fun newInstance(movieDetail: MovieDetail?): DetailFragment {
             return DetailFragment().apply {
                 arguments = Bundle().apply {
-                   putSerializable(EXTRA_TITLE_MOVIE, movieDetail)
-                    movie = getSerializable(EXTRA_TITLE_MOVIE) as MovieDetail
+                   putParcelable(EXTRA_TITLE_MOVIE, movieDetail)
                 }
             }
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }
