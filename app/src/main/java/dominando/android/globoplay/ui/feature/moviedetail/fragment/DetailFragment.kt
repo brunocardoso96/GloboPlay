@@ -18,7 +18,6 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initialize()
     }
 
@@ -33,7 +32,6 @@ class DetailFragment : Fragment() {
 
     private fun initialize() {
         setupViewModel()
-//        viewModel.getMovieDetail(movie)
         setupDetail()
     }
 
@@ -42,9 +40,9 @@ class DetailFragment : Fragment() {
     }
 
     private fun setupDetail() {
-        viewModel.movieLiveData.observeResource(this) {
-            binding.txtOriginalTitle.text = it.title
-        }
+//        viewModel.movieLiveData.observeResource(this) {
+//
+//        }
     }
 //    private fun setLayout() {
 //        arguments?.getParcelable<MovieDetail>(EXTRA_TITLE_MOVIE)?.let { viewModel.getMovieDetail(it) }
@@ -52,14 +50,9 @@ class DetailFragment : Fragment() {
 
     companion object {
         const val TITLE_DETAIL = "Detalhes"
-        const val EXTRA_TITLE_MOVIE = "EXTRA_TITLE_MOVIE"
-        fun newInstance(movieDetail: MovieDetail): DetailFragment {
-            return DetailFragment().apply {
-                arguments = Bundle().apply {
-                   putParcelable(EXTRA_TITLE_MOVIE, movieDetail)
-//                    movie = arguments?.getParcelable<MovieDetail>(EXTRA_TITLE_MOVIE) as MovieDetail
-                }
-            }
-        }
+    }
+
+    fun setMovie(movie: MovieDetail){
+        binding.txtOriginalTitle.text = movie.title
     }
 }

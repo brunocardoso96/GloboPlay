@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import dominando.android.globoplay.data.respository.MovieDetailRepository
 import dominando.android.globoplay.databinding.ActivityMovieDetailBinding
-import dominando.android.globoplay.helper.blurImage
 import dominando.android.globoplay.helper.concatGenre
 import dominando.android.globoplay.helper.loadImage
 import dominando.android.globoplay.ui.feature.moviedetail.adapter.MovieInfoAdapter
@@ -19,6 +18,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var viewModel: MovieDetailViewModel
+    private val detailFragment = DetailFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +38,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private fun setupPageView() {
         val adapter = MovieInfoAdapter(supportFragmentManager)
         adapter.addFragment(MyFavoriteMovieFragment(), MyFavoriteMovieFragment.TITLE_MY_FAVORITE)
-        adapter.addFragment(DetailFragment(), DetailFragment.TITLE_DETAIL)
+        adapter.addFragment(detailFragment, DetailFragment.TITLE_DETAIL)
         binding.viewPager.adapter = adapter
         binding.tabs.setupWithViewPager(binding.viewPager)
     }
@@ -49,6 +49,7 @@ class MovieDetailActivity : AppCompatActivity() {
             MovieDetailViewModel.
             MovieDetailViewModelFactory(MovieDetailRepository()))
             .get(MovieDetailViewModel::class.java)
+
     }
 
     private fun getValuesIntent() {
@@ -62,8 +63,9 @@ class MovieDetailActivity : AppCompatActivity() {
             binding.txtTitle.text = it.title
             binding.txtDescription.text = it.overview
             binding.txtGenre.text = it.genres.concatGenre()
-            binding.imgBlur.blurImage(it.postPath)
+            binding.imgBlur.loadImage(it.postPath, true)
             binding.imgMovie.loadImage(it.postPath)
+            detailFragment.setMovie(it)
         }
     }
 

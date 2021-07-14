@@ -85,23 +85,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDescription" />
 
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tabs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_32"
-            android:background="@color/black"
-            app:tabIndicator="@drawable/tab_item_selector"
-            style="@style/Widget.AppCompat.DrawerArrowToggle"
-            app:tabIndicatorFullWidth="false"
-            app:tabIndicatorHeight="@dimen/tab_indication_height"
-            app:tabSelectedTextColor="@color/white"
-            app:tabTextColor="@color/grey_medium"
-            app:tabMode="scrollable"
-            app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
-            app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
-            app:layout_constraintTop_toBottomOf="@+id/layoutButton" />
-
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="wrap_content"
@@ -109,7 +92,25 @@
             app:layout_constraintBottom_toBottomOf="@id/constrainMovieDetail"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
             app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
-            app:layout_constraintTop_toBottomOf="@+id/tabs" />
+            app:layout_constraintTop_toBottomOf="@+id/layoutButton">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabs"
+                style="@style/Widget.AppCompat.DrawerArrowToggle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
+                app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
+                app:layout_constraintTop_toBottomOf="@+id/layoutButton"
+                app:tabIconTint="@color/grey_medium"
+                app:tabIndicatorColor="#FFFFFF"
+                app:tabIndicatorFullWidth="false"
+                app:tabIndicatorHeight="@dimen/tab_indication_height"
+                app:tabMode="scrollable"
+                app:tabSelectedTextColor="@color/white"
+                app:tabTextColor="@color/grey_medium" />
+        </androidx.viewpager.widget.ViewPager>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
