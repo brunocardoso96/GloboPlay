@@ -2,7 +2,7 @@
 <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toolBarMain"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="@dimen/toobar_height"
     android:gravity="center"
     android:theme="@style/Theme.GloboPlay">
 
@@ -11,8 +11,8 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-thin"
         android:gravity="center"
-        android:text="globoplay"
+        android:text="@string/toolbar_globoplay"
         android:textColor="@color/white"
-        android:textSize="26dp"
+        android:textSize="@dimen/text_size_26"
         android:textStyle="bold" />
 </com.google.android.material.appbar.AppBarLayout>
