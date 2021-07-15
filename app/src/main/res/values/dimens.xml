@@ -25,7 +25,7 @@
     <dimen name="text_size_12">12sp</dimen>
 
     <!--specific measures-->
-    <dimen name="img_background_height">340dp</dimen>
+    <dimen name="img_background_height">270dp</dimen>
     <dimen name="img_post_width">100dp</dimen>
     <dimen name="img_post_height">150dp</dimen>
     <dimen name="tab_indication_height">2dp</dimen>

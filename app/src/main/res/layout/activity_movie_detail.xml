@@ -17,11 +17,12 @@
             android:id="@+id/imgBlur"
             android:layout_width="match_parent"
             android:layout_height="@dimen/img_background_height"
-            android:src="@color/grey_dark"
             android:scaleType="centerCrop"
+            android:src="@color/grey_dark"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
-            app:layout_constraintTop_toTopOf="@+id/constrainMovieDetail"/>
+            app:layout_constraintTop_toTopOf="@+id/constrainMovieDetail" />
 
         <ImageView
             android:id="@+id/imgMovie"
@@ -47,7 +48,7 @@
             android:textSize="@dimen/text_size_22"
             app:layout_constraintStart_toStartOf="@+id/imgMovie"
             app:layout_constraintEnd_toEndOf="@+id/imgMovie"
-            app:layout_constraintTop_toBottomOf="@+id/imgMovie"/>
+            app:layout_constraintTop_toBottomOf="@+id/imgBlur"/>
 
         <TextView
             android:id="@+id/txtGenre"
@@ -56,7 +57,7 @@
             android:layout_marginTop="@dimen/margin_5"
             tools:text="Animação"
             android:textSize="@dimen/text_size_12"
-            android:textColor="@color/grey_extra_2"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="@+id/txtTitle"
             app:layout_constraintEnd_toEndOf="@+id/txtTitle"
             app:layout_constraintTop_toBottomOf="@+id/txtTitle"/>
@@ -70,7 +71,7 @@
             android:layout_marginEnd="@dimen/margin_10"
             android:maxLines="3"
             tools:text="ddsadas das dsad sadsad das dsa dsa dasdsa dsa dsa dsad das dsa das dsa dsad sadsa dsa dsa dsa dsa das dsa dsad sad sa dsa dsadsadsadsad sad sadsa dsadsa dsadsa dsad asd sad sadsadsa"
-            android:textColor="@color/grey_light_extra"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtGenre" />
@@ -84,7 +85,7 @@
             android:background="@drawable/button_watch"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgBlur"
+            app:layout_constraintTop_toBottomOf="@+id/txtDescription"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="ContentDescription" />
 
