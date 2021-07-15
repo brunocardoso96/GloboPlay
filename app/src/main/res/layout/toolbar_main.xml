@@ -2,7 +2,7 @@
 <com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toolBarMain"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/toobar_height"
+    android:layout_height="@dimen/layout_toolbar_height"
     android:gravity="center"
     android:theme="@style/Theme.GloboPlay">
 

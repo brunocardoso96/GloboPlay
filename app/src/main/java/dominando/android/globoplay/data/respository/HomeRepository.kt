@@ -10,7 +10,7 @@ class HomeRepository {
     private val movieByGenre = ArrayList<MovieToGenre>()
     private val service = Api.serviceMoviesDB()
 
-    suspend fun getGenre(): List<Genre> {
+    private suspend fun getGenre(): List<Genre> {
         return service.getGenre(Api.APIKEY)
             .genres
             .map {
@@ -18,7 +18,7 @@ class HomeRepository {
             }
     }
 
-    suspend fun getMovie(): List<Movie> {
+    private suspend fun getMovie(): List<Movie> {
         return service.getMovie(Api.APIKEY)
             .results
             .map {
@@ -28,14 +28,15 @@ class HomeRepository {
 
     suspend fun getMovieByGenre(): ArrayList<MovieToGenre> {
         getGenre().forEach { genre ->
-            movieByGenre.add(MovieToGenre(genre.id, genre.name, selectMovieToGenre(genre.id)))
+            val listMovies = selectMovieToGenre(genre.id)
+            if(listMovies.size != 0) movieByGenre.add(MovieToGenre(genre.id, genre.name, listMovies))
         }
         return movieByGenre
     }
 
     private suspend fun selectMovieToGenre(id: Int): MutableList<Movie> {
         val movies: MutableList<Movie> = ArrayList()
-        getGenre().forEach {
+        repeat(getGenre().size) {
             getMovie().forEach { movie ->
                 movie.genre.forEach {
                     if (it == id) {
