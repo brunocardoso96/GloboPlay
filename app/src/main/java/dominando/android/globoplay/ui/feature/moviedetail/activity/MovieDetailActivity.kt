@@ -19,6 +19,7 @@ class MovieDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMovieDetailBinding
     private lateinit var viewModel: MovieDetailViewModel
     private val detailFragment = DetailFragment()
+    private val myFavoriteMovieFragment = MyFavoriteMovieFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +38,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
     private fun setupPageView() {
         val adapter = MovieInfoAdapter(supportFragmentManager)
-        adapter.addFragment(MyFavoriteMovieFragment(), MyFavoriteMovieFragment.TITLE_MY_FAVORITE)
+        adapter.addFragment(myFavoriteMovieFragment, MyFavoriteMovieFragment.TITLE_MY_FAVORITE)
         adapter.addFragment(detailFragment, DetailFragment.TITLE_DETAIL)
         binding.viewPager.adapter = adapter
         binding.tabs.setupWithViewPager(binding.viewPager)
@@ -49,7 +50,6 @@ class MovieDetailActivity : AppCompatActivity() {
             MovieDetailViewModel.
             MovieDetailViewModelFactory(MovieDetailRepository()))
             .get(MovieDetailViewModel::class.java)
-
     }
 
     private fun getValuesIntent() {

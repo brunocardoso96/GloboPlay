@@ -5,21 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import dominando.android.globoplay.data.model.MovieDetail
 import dominando.android.globoplay.databinding.FragmentMovieInfoBinding
-import dominando.android.globoplay.helper.observeResource
-import dominando.android.globoplay.ui.feature.moviedetail.viewmodel.DetailViewModel
+import dominando.android.globoplay.helper.concatGenre
 
 class DetailFragment : Fragment() {
 
     private lateinit var binding: FragmentMovieInfoBinding
-    private lateinit var viewModel: DetailViewModel
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        initialize()
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,29 +22,15 @@ class DetailFragment : Fragment() {
         return root
     }
 
-    private fun initialize() {
-        setupViewModel()
-        setupDetail()
-    }
-
-    private fun setupViewModel() {
-        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
-    }
-
-    private fun setupDetail() {
-//        viewModel.movieLiveData.observeResource(this) {
-//
-//        }
-    }
-//    private fun setLayout() {
-//        arguments?.getParcelable<MovieDetail>(EXTRA_TITLE_MOVIE)?.let { viewModel.getMovieDetail(it) }
-//    }
-
     companion object {
         const val TITLE_DETAIL = "Detalhes"
     }
 
     fun setMovie(movie: MovieDetail){
         binding.txtOriginalTitle.text = movie.title
+        binding.txtGenre.text = movie.genres.concatGenre()
+        binding.txtLanguage.text = movie.languages
+        binding.txtRuntime.text = movie.runtime.toString()
+        binding.txtReleaseDate.text = movie.releaseDate
     }
 }

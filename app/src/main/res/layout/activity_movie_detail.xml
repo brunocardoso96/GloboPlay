@@ -88,7 +88,8 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/page_view_height"
+            android:layout_height="300dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintBottom_toBottomOf="@id/constrainMovieDetail"
             app:layout_constraintEnd_toEndOf="@+id/constrainMovieDetail"
             app:layout_constraintStart_toStartOf="@+id/constrainMovieDetail"
